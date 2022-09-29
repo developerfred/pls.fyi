@@ -223,6 +223,7 @@ template {
 body {
   font-family: 'Roboto', sans-serif;
   color: #58595B;
+  background-color: #eef2f5;
 }
 
 p {
@@ -237,6 +238,7 @@ p {
 .page {
   max-width: 900px;
   margin: 0 auto;
+  background-color: #eef2f5;
 }
 
 .container {

@@ -9,17 +9,21 @@
 (insert.eth name as you see fit)
   
 ### Access Container
+
 * `docker-compose exec eth-xyz-node bash`
 
 ### Process domain setup queue
 
 Run it once:
+
 * `node ace process:queue`
 
 Run it using forever:
+
 * `forever --minUptime=1000 --spinSleepTime=2000 ace process:queue`
 
 ### Build for Production
+
 * `node ace build --production --ignore-ts-errors`
 * `cd build`
 * `cp ../.env .env`
@@ -42,6 +46,7 @@ I recommend using `forever` to run basic servers. Otherwise you can use `pm2`
 * https://docs.adonisjs.com/guides/deployment#using-a-process-manager
 
 ### Troubleshooting
+
 * Intermittent `Error: Cannot find module '../lib/config/parse-runtime'` errors can be solved by accessing the docker container and running `rm -rf node_modules;npm install`
 
 ### Architecture Notes

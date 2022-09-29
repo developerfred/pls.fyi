@@ -650,6 +650,12 @@ linear-gradient(transparent, transparent);
   transition: opacity .25s ease-in-out;
 }
 
+.site-footer__logo--image{
+  width: 100px;
+  opacity: 1;
+  text-decoration: none;
+}
+
 .site-footer__section--disclaimer {
   margin-top: 30px;
   font-size: 13px;
@@ -810,6 +816,7 @@ linear-gradient(transparent, transparent);
   justify-content: flex-start;
   margin-bottom: 15px;
   margin-left: -15px;
+
 }
 
 .profile__portfolio--item {
@@ -822,7 +829,7 @@ linear-gradient(transparent, transparent);
   margin-left: 15px;
   flex: 0 0 auto;
   border: 2px solid #fff;
-  border-radius: 3px;
+  border-radius: 32px;
   box-shadow: 0 3px 6px #00000029;
 }
 
