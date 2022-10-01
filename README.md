@@ -1,20 +1,20 @@
-# *.eth.xyz
+# *.pls.fyi
 
 ## Summary
 
-Eth.xyz is a service that showcases the public [ENS profile](https://ens.domains/) and NFT collection of any .eth name on a simple, secure, and easily shareable URL. Just add .xyz to the end of any .eth name in any browser and visit the URL.
+pls.fyi is a service that showcases the public [ENS profile](https://ens.domains/) and NFT collection of any .eth name on a simple, secure, and easily shareable URL. Just add .xyz to the end of any .eth name in any browser and visit the URL.
 
-For example: the ENS profile for [maaria.eth](https://app.ens.domains/name/maaria.eth/details) is accessible in any browser at [maaria.eth.xyz](https://maaria.eth.xyz/).
+For example: the ENS profile for [maaria.eth](https://app.ens.domains/name/maaria.eth/details) is accessible in any browser at [maaria.pls.fyi](https://maaria.pls.fyi/).
 
-Every .eth name has been granted automatic access to the eth.xyz feature.
+Every .eth name has been granted automatic access to the pls.fyi feature.
 
 The profile content is automatically generated from publicly available information provided through [ENS](https://ens.domains/) and is ultimately controlled by the relevant [ENS](https://ens.domains/) user.
 
 ## Examples
 
-* [https://maaria.eth.xyz](https://maaria.eth.xyz)
-* [https://nick.eth.xyz](https://nick.eth.xyz)
-* [https://vitalik.eth.xyz](https://vitalik.eth.xyz)
+* [https://maaria.pls.fyi](https://maaria.pls.fyi)
+* [https://nick.pls.fyi](https://nick.pls.fyi)
+* [https://vitalik.pls.fyi](https://vitalik.pls.fyi)
 
 ## Stack
 

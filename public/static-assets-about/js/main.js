@@ -86,5 +86,5 @@ function copy(e) {
 // Handle 4th level redirect
 let subSubDomain = window.location.search.match(/\?domain=(.*?)\.eth\.xyz&/)
 if (subSubDomain.length === 2) {
-  window.location.href = 'https://eth.xyz/' + subSubDomain[1] + '.eth'
+  window.location.href = 'https://pls.fyi/' + subSubDomain[1] + '.pls'
 }

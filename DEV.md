@@ -1,4 +1,4 @@
-# eth.xyz Wildcard
+# pls.fyi Wildcard
 
 ### Basic Setup
 

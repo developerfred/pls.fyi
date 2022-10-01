@@ -9,7 +9,7 @@ const punycode = require('punycode/')
 
 export default class LandingController {
   private CACHE_KEY_PREFIX = 'count-'
-  private mainHostingDomain = 'eth.xyz'
+  private mainHostingDomain = 'pls.fyi'
   private ensService = new EnsService()
 
   public async index({ request, params, response }) {
@@ -26,7 +26,7 @@ export default class LandingController {
       domainBeingAccessed = decodeURI(this.punifyIfNeeded(domainBeingAccessed))
     }
 
-    // if domain is eth.xyz or localhost
+    // if domain is pls.fyi or localhost
     if (domainBeingAccessed === this.mainHostingDomain || domainBeingAccessed === 'localhost') {
       // if domain set using path, use that
       if (typeof params.domainAsPath === 'string') {
@@ -37,16 +37,16 @@ export default class LandingController {
         return await View.render('landing_about')
       }
     } else if (domainBeingAccessed.indexOf(this.mainHostingDomain) !== -1) {
-      // if page is being accessed via fourth level domain (a.b.eth.xyz)
+      // if page is being accessed via fourth level domain (a.b.pls.fyi)
       let domainBeingAccessedParts = domainBeingAccessed.split('.')
       if (domainBeingAccessedParts.length > 3) {
-        // redirect to a third level (b.eth.xyz) so we can use our ssl wildcard
+        // redirect to a third level (b.pls.fyi) so we can use our ssl wildcard
         return response
           .redirect()
           .status(302)
           .toPath('https://' + domainBeingAccessedParts.slice(-3).join('.'))
       }
-      // if we are using the main hosting subdomain, strip off eth.xyz for lookup
+      // if we are using the main hosting subdomain, strip off pls.fyi for lookup
       domainToLookup = domainBeingAccessed.replace(`.${this.mainHostingDomain}`, '') + '.eth'
     } else {
       // else use the full hostname directly for lookup
