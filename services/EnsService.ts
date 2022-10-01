@@ -1,10 +1,10 @@
 import Env from '@ioc:Adonis/Core/Env'
-import Redis from "@ioc:Adonis/Addons/Redis";
+import Redis from '@ioc:Adonis/Addons/Redis'
 import Logger from '@ioc:Adonis/Core/Logger'
 
 export default class EnsService {
-  private CACHE_KEY_PREFIX = 'ens-domain-';
-  private textRecordValues: object = {};
+  private CACHE_KEY_PREFIX = 'ens-domain-'
+  private textRecordValues: object = {}
   private textRecordKeys: string[] = [
     'avatar',
     'description',
@@ -22,38 +22,58 @@ export default class EnsService {
     'com.twitter',
     'io.keybase',
     'org.telegram',
-  ];
-  private wallets: object[] = [ //https://eips.ethereum.org/EIPS/eip-2304
+    'com.linkedin',
+    'com.youtube',
+    'com.facebook',
+    'com.instagram',
+    'com.snapchat',
+    'com.spotify',
+    'com.tiktok',
+    'com.medium',
+    'com.play.google',
+    'com.apple',
+    'com.opensea',
+    'com.onlyfans',
+    'com.looksrare',
+    'podcast',
+    'shopify',
+    'mirror',
+    'com.twitch',
+    'com.substack',
+    'xyz.lenster',
+    'xyz.lens',
+  ]
+  private wallets: object[] = [
+    //https://eips.ethereum.org/EIPS/eip-2304
     {
       key: 0,
       name: 'bitcoin',
-      value: null
+      value: null,
     },
     {
       key: 2,
       name: 'litecoin',
-      value: null
+      value: null,
     },
     {
       key: 3,
       name: 'dogecoin',
-      value: null
+      value: null,
     },
     {
       key: 22,
       name: 'monacoin',
-      value: null
+      value: null,
     },
     {
       key: 60,
       name: 'ethereum',
-      value: null
-    }
-  ];
-  private promises: Promise<any>[] = [];
+      value: null,
+    },
+  ]
+  private promises: Promise<any>[] = []
 
-  constructor() {
-  }
+  constructor() {}
 
   async getTextRecords(domain) {
     Logger.debug(`Pulling ${domain}`)
@@ -70,7 +90,7 @@ export default class EnsService {
     const provider = new ethers.providers.InfuraProvider('homestead', {
       projectId: Env.get('INFURA_PROJECT_ID'),
       projectSecret: Env.get('INFURA_PROJECT_SECRET'),
-    });
+    })
     // uncomment to use all providers
     // const provider = new ethers.getDefaultProvider('homestead', {
     //   alchemy: Env.get('ALCHEMY_API'),
@@ -84,33 +104,32 @@ export default class EnsService {
     //     applicationSecretKey: Env.get('POKT_PORTAL_SECRET'),
     //   }
     // });
-    let resolver = await provider.getResolver(domain);
+    let resolver = await provider.getResolver(domain)
 
     Logger.debug(resolver)
     // If this domain doesn't have a resolver
-    if(resolver === null) {
-      return null;
+    if (resolver === null) {
+      return null
     }
 
     // Load ENS Text Records
     this.textRecordKeys.forEach((textKey) => {
-        this.promises.push(
-          resolver.getText(textKey).then((result) => {
-            this.textRecordValues[textKey] = result;
-          }
-        )
-      );
-    });
+      this.promises.push(
+        resolver.getText(textKey).then((result) => {
+          this.textRecordValues[textKey] = result
+        })
+      )
+    })
 
     // Add Content Hash (not really a text record, but we'll store it here regardless)
     this.promises.push(
-      resolver.getContentHash().then((result) => {
-          this.textRecordValues['contentHash'] = result;
-        }
-      ).catch(() => {
-
-      })
-    );
+      resolver
+        .getContentHash()
+        .then((result) => {
+          this.textRecordValues['contentHash'] = result
+        })
+        .catch(() => {})
+    )
 
     // Load Wallet Records
     this.wallets.forEach((walletObj, walletIndex) => {
@@ -123,18 +142,22 @@ export default class EnsService {
             this.wallets[walletIndex].value = result
           })
           .catch((err) => console.log(err))
-      );
-    });
+      )
+    })
 
-    await Promise.all(this.promises);
-    this.textRecordValues['wallets'] = this.wallets;
+    await Promise.all(this.promises)
+    this.textRecordValues['wallets'] = this.wallets
     if (Env.get('REDIS_ENABLED')) {
-      await Redis.setex(`${this.CACHE_KEY_PREFIX}${domain}`, Env.get('RESULT_CACHE_SECONDS'), JSON.stringify(this.textRecordValues));
+      await Redis.setex(
+        `${this.CACHE_KEY_PREFIX}${domain}`,
+        Env.get('RESULT_CACHE_SECONDS'),
+        JSON.stringify(this.textRecordValues)
+      )
     }
-    return this.textRecordValues;
+    return this.textRecordValues
   }
 
   public getTextRecordValues() {
-    return this.textRecordValues;
+    return this.textRecordValues
   }
 }
