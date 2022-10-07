@@ -1068,6 +1068,11 @@ linear-gradient(transparent, transparent);
   position: relative;
   margin-bottom: 15px;
   width: auto;
+  background-color: #fff;
+  padding: 25px;
+  transition: all 400ms ease;
+  align-items: flex-start;
+  border-radius: 16px;
 }
 
 .profile__addresses--item .notification-copied {
