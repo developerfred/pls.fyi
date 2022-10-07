@@ -18,7 +18,7 @@
   <link rel="icon" type="image/png" href="/static-assets/img/favicon.png?v=1" sizes="32x32" />
   <link rel="icon" type="image/png" href="/static-assets/img/favicon.png?v=1" sizes="16x16" />
 
-  <title>{{ domainToLookup }}'s ENS profile & NFT collection | pls.fyi</title>
+  <title>{{ domainToLookup }}'s PLS profile & NFT collection | pls.fyi</title>
 
   <meta name="description" content="View the ENS profile and NFTs for {{ domainToLookup }}. Shareable in any browser with the URL {{ domainBeingAccessed }}. This feature is open for all .eth names.">
   <meta name="keywords" content="{{ domainToLookup }}, {{ domainBeingAccessed }}, pls.fyi, .eth, .eth names, ENS, ethereum name service, .xyz domains">
@@ -55,7 +55,14 @@
 
 </head>
 <body class="page page__profile">
+<nav id="pls-nav" class="pls__header">
+  <div class="pls__header--logo">
+    <img src="static-assets-about/img/logos/logo-pulsedomains.png" loading="lazy" alt="pulsedomains" class="logo">
+  </div>
+</nav>
+
 <header class="profile__header">
+  <div class="line_divider"></div>
   <div class="profile__header--hero"></div>
   <div class="container">
     <div class="profile__header--info">
@@ -67,6 +74,8 @@
       </div>
       <div class="profile__info">
         <h1 class="profile__name">{{ domainToLookup }}</h1>
+        <div id="address-box"><span class="profile__addresses--address-text"></span></div>
+        <div id="description-box">Hi there, I'm Jessey and a designer, dad and web3 degen. You can find my socials & NFT collection below.</div>
         <div id="url-container">
           <p class="profile__url">URL:
             <button class="btn btn-link profile__url--btn" data-value="https://{{ domainBeingAccessed }}" onClick="copy(this)">
@@ -419,5 +428,7 @@
     }
 </script>
 <script src="/static-assets/js/main.js?v=1.0"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
+<script type="text/javascript">WebFont.load({  google: {    families: ["Inter:300,regular,500,600,700,800"]  }});</script>
 </body>
 </html>

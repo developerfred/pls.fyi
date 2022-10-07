@@ -273,6 +273,27 @@ class EthXyzLoader {
     let telegram = this.getTextRecord('org.telegram')
     let twitter = this.getTextRecord('com.twitter')
     let url = this.getTextRecord('url')
+    let url2 = this.getTextRecord('url2')
+    let url3 = this.getTextRecord('url3')
+    let youtube = this.getTextRecord('com.youtube')
+    let facebook = this.getTextRecord('com.facebook')
+    let instagram = this.getTextRecord('com.instagram')
+    let snapchat = this.getTextRecord('com.snapchat')
+    let spotify = this.getTextRecord('com.spotify')
+    let tiktok = this.getTextRecord('com.tiktok')
+    let medium = this.getTextRecord('com.medium')
+    let googleplay = this.getTextRecord('com.play.google')
+    let apple = this.getTextRecord('com.apple')
+    let opensea = this.getTextRecord('com.opensea')
+    let onlyfans = this.getTextRecord('com.onlyfans')
+    let looksrare = this.getTextRecord('com.looksrare')
+    let podcast = this.getTextRecord('podcast')
+    let shopify = this.getTextRecord('shopify')
+    let mirror = this.getTextRecord('mirror')
+    let twitch = this.getTextRecord('com.twitch')
+    let substack = this.getTextRecord('com.substack')
+    let lenster = this.getTextRecord('xyz.lenster')
+    let lens = this.getTextRecord('xyz.lens')
     let contentHash = this.getTextRecord('contentHash')
     let contentHashGateway = '';
     if (contentHash && contentHash.indexOf('ipfs://') !== -1)
@@ -289,6 +310,15 @@ class EthXyzLoader {
       telegram === null &&
       twitter === null &&
       url === null &&
+      url2 === null &&
+      url3 === null &&
+      lens === null &&
+      lenster === null &&
+      substack === null &&
+      twitch === null &&
+      mirror === null &&
+      shopify === null &&
+      podcast === null &&
       contentHash === null
     ) {
       this.els.containers.profile.classList.add('hide')

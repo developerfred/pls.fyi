@@ -1,5 +1,8 @@
 /* Reset Minified normalize.css - https://github.com/necolas/normalize.css */
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
+
 html {
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
@@ -25,7 +28,7 @@ hr {
 }
 
 pre {
-  font-family: monospace, monospace;
+  /* font-family: monospace, monospace; */
   font-size: 1em
 }
 
@@ -221,8 +224,12 @@ template {
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
-  color: #58595B;
+  font-family: Inter, sans-serif;
+  color: #070707;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: -0.3px;
+  background-color: #eef2f5;
 }
 
 p {
@@ -235,7 +242,7 @@ p {
 ------------------------------------ */
 
 .page {
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -678,15 +685,15 @@ linear-gradient(transparent, transparent);
 ------------------------------------ */
 
 .profile__header {
-  border-top: 4px solid #273041;
+  /* border-top: 4px solid #273041; */
 }
 
 .profile__header--hero {
-  background: linear-gradient(117deg,#326BD5,#32B6D5);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  height: 216px;
+  /* background: linear-gradient(117deg,#326BD5,#32B6D5); */
+  /* background-repeat: no-repeat; */
+  /* background-size: cover; */
+  /* background-position: center center; */
+  height: 100px;
 }
 
 .profile__header--info {
@@ -695,8 +702,8 @@ linear-gradient(transparent, transparent);
 
 .profile__avatar--circle {
   position: relative;
-  width: 144px;
-  height:144px;
+  width: 160px;
+  height: 160px;
   margin: -72px auto 0 auto;
   border-radius: 50%;
   border: 4px solid #fff;
@@ -715,9 +722,30 @@ linear-gradient(transparent, transparent);
 }
 
 .profile__avatar {
-  position: relative;
-  height: auto;
-  text-align: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 180px;
+  height: 180px;
+  padding: 10px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #dee2e5;
+  border-radius: 500px;
 }
 
 .profile__avatar--image {
@@ -725,7 +753,7 @@ linear-gradient(transparent, transparent);
   top: 0;
   left: 50%;
   transform: translate(-50%,-4px);
-  height: 144px;
+  height: 160px;
   width: auto;
   text-indent: 100%;
   white-space: nowrap;
@@ -742,9 +770,8 @@ linear-gradient(transparent, transparent);
 }
 
 .profile__name {
-  font-family: 'Montserrat', sans-serif;
+  font-family: Inter, sans-serif;
   font-weight: 600;
-  text-transform: uppercase;
   font-size: 18px;
   letter-spacing: 1.8px;
   color: #273041;
@@ -1424,3 +1451,35 @@ linear-gradient(transparent, transparent);
 .page__404--heading1 {
   margin-bottom: 40px;
 }
+
+
+/* ------------------------------------
+	PLS version 1.0.0
+------------------------------------ */
+
+.pls__header {
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+  height: 66px;
+}
+
+.pls__header--logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.pls__header--logo .logo{
+  width: 40px;
+}
+
+.line_divider {
+  width: 100%;
+  height: 1px;
+  background-color: #dee2e5;
+}
+
+
+/* ./static-assets-about/img/feedback-email-eth-xyz.png';this.onerror=null;" alt="feedback at eth dot xyz" title="feedback at eth dot xy */

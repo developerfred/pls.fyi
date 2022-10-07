@@ -59,6 +59,9 @@ function truncateText() {
         let displayText = button.querySelector('.profile__addresses--address-text');
 
         displayText.innerText = truncatedText;
+
+        console.log(displayText);
+
     }
 }
 

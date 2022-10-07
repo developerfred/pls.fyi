@@ -16,6 +16,8 @@ export default class EnsService {
     'location',
     'phone',
     'url',
+    'url2',
+    'url3',
     'com.github',
     'com.peepeth',
     'com.linkedin',
@@ -68,6 +70,11 @@ export default class EnsService {
     {
       key: 60,
       name: 'ethereum',
+      value: null,
+    },
+    {
+      key: 369,
+      name: 'pulsechain',
       value: null,
     },
   ]
