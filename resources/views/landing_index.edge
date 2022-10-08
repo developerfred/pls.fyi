@@ -20,20 +20,20 @@
 
   <title>{{ domainToLookup }}'s PLS profile & NFT collection | pls.fyi</title>
 
-  <meta name="description" content="View the ENS profile and NFTs for {{ domainToLookup }}. Shareable in any browser with the URL {{ domainBeingAccessed }}. This feature is open for all .eth names.">
+  <meta name="description" content="View the PLS profile and NFTs for {{ domainToLookup }}. Shareable in any browser with the URL {{ domainBeingAccessed }}. This feature is open for all .eth names.">
   <meta name="keywords" content="{{ domainToLookup }}, {{ domainBeingAccessed }}, pls.fyi, .eth, .eth names, ENS, ethereum name service, .xyz domains">
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="{{ domainBeingAccessed }}" />
   <meta property="og:url" content="https://{{ domainBeingAccessed }}" />
   <meta property="og:title" content="{{ domainToLookup }}'s ENS profile & NFT collection | pls.fyi" />
-  <meta property="og:description" content="View the ENS profile and NFTs for {{ domainToLookup }}. Shareable in any browser with the URL {{ domainBeingAccessed }}. This feature is open for all .eth names.">
+  <meta property="og:description" content="View the PLS profile and NFTs for {{ domainToLookup }}. Shareable in any browser with the URL {{ domainBeingAccessed }}. This feature is open for all .eth names.">
   <meta property="og:image" content="https://{{ domainBeingAccessed }}/static-assets/img/social-share-eth-xyz.png?v=2" />
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://{{ domainBeingAccessed }}">
   <meta name="twitter:title" content="{{ domainToLookup }}'s ENS profile & NFT collection | pls.fyi">
-  <meta name="twitter:description" content="View the ENS profile and NFTs for {{ domainToLookup }}. Shareable in any browser with the URL {{ domainBeingAccessed }}. This feature is open for all .eth names.">
+  <meta name="twitter:description" content="View the PLS profile and NFTs for {{ domainToLookup }}. Shareable in any browser with the URL {{ domainBeingAccessed }}. This feature is open for all .eth names.">
   <meta name="twitter:image" content="https://{{ domainBeingAccessed }}/static-assets/img/social-share-eth-xyz.png?v=2" />
 
   <link rel="canonical" href="https://{{ domainBeingAccessed }}">
@@ -75,7 +75,6 @@
       <div class="profile__info">
         <h1 class="profile__name">{{ domainToLookup }}</h1>
         <div id="address-box"><span class="profile__addresses--address-text"></span></div>
-        <div id="description-box">Hi there, I'm Jessey and a designer, dad and web3 degen. You can find my socials & NFT collection below.</div>
         <div id="url-container">
           <p class="profile__url">URL:
             <button class="btn btn-link profile__url--btn" data-value="https://{{ domainBeingAccessed }}" onClick="copy(this)">
@@ -201,92 +200,62 @@
     <p><%= description %></p>
   </div>
   <% } %>
-  <div class="profile__social">
-    <ul class="profile__social--items list-unstyled">
+  <div class="content_wrapper">
+    <ul class="socials_wrapper">
       <% if(url != null) { %>
-      <li class="profile__social--item profile__social--url">
-        <span class="profile__social--icon">
-          <svg class="fa-icon">
-            <use xlink:href="/static-assets/img/fa-sprite.svg#link"></use>
-          </svg>
-        </span>
-        <a href="<%= url %>" target="_blank" rel="noopener noreferrer"><%= url %></a>
+      <li class="icon_wrapper w-inline-block">
+        <a href="<%= url %>" target="_blank" rel="noopener noreferrer"><div class="icon_24x24 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+          <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm10 12c0 .685-.07 1.354-.202 2h-3.853c.121-1.283.129-2.621 0-4h3.853c.132.646.202 1.315.202 2zm-.841-4h-3.5c-.383-1.96-1.052-3.751-1.948-5.278 2.435.977 4.397 2.882 5.448 5.278zm-5.554 0h-2.605v-5.658c1.215 1.46 2.117 3.41 2.605 5.658zm-4.605-5.658v5.658h-2.605c.488-2.248 1.39-4.198 2.605-5.658zm0 7.658v4h-2.93c-.146-1.421-.146-2.577 0-4h2.93zm0 6v5.658c-1.215-1.46-2.117-3.41-2.605-5.658h2.605zm2 5.658v-5.658h2.605c-.488 2.248-1.39 4.198-2.605 5.658zm0-7.658v-4h2.93c.146 1.421.146 2.577 0 4h-2.93zm-4.711-11.278c-.896 1.527-1.565 3.318-1.948 5.278h-3.5c1.051-2.396 3.013-4.301 5.448-5.278zm-6.087 7.278h3.853c-.121 1.283-.129 2.621 0 4h-3.853c-.132-.646-.202-1.315-.202-2s.07-1.354.202-2zm.639 6h3.5c.383 1.96 1.052 3.751 1.948 5.278-2.435-.977-4.397-2.882-5.448-5.278zm12.87 5.278c.896-1.527 1.565-3.318 1.948-5.278h3.5c-1.051 2.396-3.013 4.301-5.448 5.278z"></path>
+        </svg></div></a>
       </li>
       <% } %>
       <% if(email != null) { %>
-      <li class="profile__social--item profile__social--email">
-        <span class="profile__social--icon">
-          <svg class="fa-icon">
-            <use xlink:href="/static-assets/img/fa-sprite.svg#envelope"></use>
-          </svg>
-        </span>
-        <a href="mailto:<%= email %>" target="_blank" rel="noopener noreferrer"><%= email %></a>
+      <li class="icon_wrapper w-inline-block">
+        <a href="mailto:<%= email %>" target="_blank" rel="noopener noreferrer"><div class="icon_24x24 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+          <path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"></path>
+        </svg></div></a>
       </li>
       <% } %>
       <% if(github != null) { %>
-      <li class="profile__social--item profile__social--github">
-        <span class="profile__social--icon">
-          <svg class="fa-icon">
-            <use xlink:href="/static-assets/img/fa-sprite.svg#github"></use>
-          </svg>
-        </span>
+      <li class="icon_wrapper w-inline-block">
         <a href="https://github.com/<%= github %>" target="_blank" rel="noopener noreferrer"><%= github %></a>
       </li>
       <% } %>
       <% if(keybase != null) { %>
-      <li class="profile__social--item profile__social--keybase">
-        <span class="profile__social--icon">
-          <svg class="fa-icon">
-            <use xlink:href="/static-assets/img/fa-sprite.svg#keybase"></use>
-          </svg>
-        </span>
+      <li class="icon_wrapper w-inline-block">
         <a href="https://keybase.io/<%= keybase %>" target="_blank" rel="noopener noreferrer"><%= keybase %></a>
       </li>
       <% } %>
       <% if(linkedin != null) { %>
-      <li class="profile__social--item profile__social--linkedin">
-        <span class="profile__social--icon">
-          <svg class="fa-icon">
-            <use xlink:href="/static-assets/img/fa-sprite.svg#linkedin"></use>
-          </svg>
-        </span>
+      <li class="icon_wrapper w-inline-block">
         <a href="https://www.linkedin.com/in/<%= linkedin %>" target="_blank" rel="noopener noreferrer"><%= linkedin %></a>
       </li>
       <% } %>
       <% if(peepeth != null) { %>
-      <li class="profile__social--item profile__social--peepeth">
-        <span class="profile__social--icon"><img src="/static-assets/img/peepeth.svg" onerror="this.src='/static-assets/img/peepeth.png';this.onerror=null;" itemprop="icon" class="peepeth-icon"></span>
+      <li class="icon_wrapper w-inline-block">
         <a href="https://peepeth.com/<%= peepeth %>" target="_blank" rel="noopener noreferrer"><%= peepeth %></a>
       </li>
       <% } %>
       <% if(phone != null) { %>
-      <li class="profile__social--item profile__social--phone">
-        <span class="profile__social--icon">
-          <svg class="fa-icon">
-            <use xlink:href="/static-assets/img/fa-sprite.svg#phone"></use>
-          </svg>
-        </span>
+        <li class="icon_wrapper w-inline-block">
         <a href="tel:<%= phone %>" target="_blank" rel="noopener noreferrer"><%= phone %></a>
       </li>
       <% } %>
       <% if(telegram != null) { %>
-      <li class="profile__social--item profile__social--telegram">
-        <span class="profile__social--icon">
-          <svg class="fa-icon">
-            <use xlink:href="/static-assets/img/fa-sprite.svg#telegram"></use>
+      <li class="icon_wrapper w-inline-block">
+        <a href="https://t.me/<%= telegram %>" target="_blank" rel="noopener noreferrer"><div class="icon_24x24 w-embed">
+          <!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
+          <svg width="22px" height="22px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+            <path id="telegram-1" d="M18.384,22.779c0.322,0.228 0.737,0.285 1.107,0.145c0.37,-0.141 0.642,-0.457 0.724,-0.84c0.869,-4.084 2.977,-14.421 3.768,-18.136c0.06,-0.28 -0.04,-0.571 -0.26,-0.758c-0.22,-0.187 -0.525,-0.241 -0.797,-0.14c-4.193,1.552 -17.106,6.397 -22.384,8.35c-0.335,0.124 -0.553,0.446 -0.542,0.799c0.012,0.354 0.25,0.661 0.593,0.764c2.367,0.708 5.474,1.693 5.474,1.693c0,0 1.452,4.385 2.209,6.615c0.095,0.28 0.314,0.5 0.603,0.576c0.288,0.075 0.596,-0.004 0.811,-0.207c1.216,-1.148 3.096,-2.923 3.096,-2.923c0,0 3.572,2.619 5.598,4.062Zm-11.01,-8.677l1.679,5.538l0.373,-3.507c0,0 6.487,-5.851 10.185,-9.186c0.108,-0.098 0.123,-0.262 0.033,-0.377c-0.089,-0.115 -0.253,-0.142 -0.376,-0.064c-4.286,2.737 -11.894,7.596 -11.894,7.596Z"></path>
           </svg>
-        </span>
-        <a href="https://t.me/<%= telegram %>" target="_blank" rel="noopener noreferrer"><%= telegram %></a>
+        </div></a>
       </li>
       <% } %>
       <% if(twitter != null) { %>
-      <li class="profile__social--item profile__social--twitter">
-        <span class="profile__social--icon">
-          <svg class="fa-icon">
-            <use xlink:href="/static-assets/img/fa-sprite.svg#twitter"></use>
-          </svg>
-        </span>
-        <a href="https://twitter.com/<%= twitter %>" target="_blank" rel="noopener noreferrer">@<%= twitter %></a>
+      <li class="icon_wrapper w-inline-block">
+        <a href="https://twitter.com/<%= twitter %>" target="_blank" rel="noopener noreferrer"><div class="icon_24x24 w-embed"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M21.8097 6.22724C21.8677 6.14647 21.7821 6.04218 21.6894 6.07811C21.0307 6.33344 20.3422 6.50571 19.64 6.5906C20.4219 6.12348 21.0253 5.4124 21.3599 4.57053C21.3939 4.48477 21.3003 4.40819 21.2195 4.4528C20.4928 4.85414 19.709 5.14313 18.8949 5.30957C18.8608 5.31654 18.8257 5.30494 18.8018 5.27969C18.1908 4.63502 17.3865 4.20578 16.5098 4.05745C15.6146 3.90601 14.6945 4.05596 13.8938 4.48379C13.093 4.91162 12.4569 5.59313 12.0852 6.42144C11.7318 7.209 11.6365 8.08691 11.8108 8.93003C11.8243 8.99545 11.7731 9.05721 11.7064 9.05307C10.1224 8.95469 8.57469 8.53336 7.15868 7.81446C5.74627 7.09739 4.49554 6.09983 3.48267 4.8833C3.43772 4.82931 3.35252 4.83629 3.31976 4.89845C3.0046 5.49651 2.83958 6.16311 2.84003 6.8406C2.83875 7.51498 3.00424 8.17922 3.32178 8.77416C3.63932 9.36911 4.09905 9.87631 4.66003 10.2506C4.0651 10.2344 3.48178 10.0873 2.95128 9.82067C2.88291 9.78631 2.8009 9.83524 2.80446 9.91167C2.84583 10.8009 3.17228 11.6936 3.73734 12.3786C4.33866 13.1074 5.17328 13.6062 6.10003 13.7906C5.74328 13.8992 5.3729 13.9564 5.00003 13.9606C4.79709 13.9582 4.59454 13.9433 4.39356 13.9158C4.31904 13.9056 4.2582 13.9764 4.28428 14.0469C4.5607 14.7944 5.04902 15.4467 5.6911 15.9228C6.37755 16.4318 7.2056 16.7142 8.06003 16.7306C6.61723 17.8659 4.83591 18.4855 3.00003 18.4906C2.81138 18.4912 2.62282 18.4851 2.43471 18.4723C2.3287 18.4651 2.27995 18.6063 2.37132 18.6605C4.16009 19.7221 6.20462 20.2831 8.29003 20.2806C9.82972 20.2966 11.3571 20.0056 12.7831 19.4247C14.2091 18.8437 15.505 17.9845 16.5952 16.8971C17.6854 15.8097 18.548 14.516 19.1326 13.0915C19.7171 11.667 20.012 10.1403 20 8.6006V8.12077C20 8.0892 20.0149 8.05951 20.0401 8.04048C20.7184 7.52834 21.3149 6.91691 21.8097 6.22724Z" fill="#070707"></path>
+        </svg></div></a>
       </li>
       <% } %>
       <% if(contentHash != null) { %>

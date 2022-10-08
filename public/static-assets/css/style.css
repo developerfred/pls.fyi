@@ -1487,4 +1487,67 @@ linear-gradient(transparent, transparent);
 }
 
 
-/* ./static-assets-about/img/feedback-email-eth-xyz.png';this.onerror=null;" alt="feedback at eth dot xyz" title="feedback at eth dot xy */
+/* ------------------------------------
+	PLS version 1.0.0 <IconWrapper>
+------------------------------------ */
+.socials_wrapper {
+  display: flex;
+  max-width: 500px;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.icon_wrapper {
+  display: flex;
+  overflow: hidden;
+  width: 48px;
+  height: 48px;
+  margin: 5px;
+  padding: 10px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 500px;
+  background-color: hsla(0, 0%, 100%, 0.6);
+  -webkit-transition: all 400ms ease;
+  transition: all 400ms ease;
+}
+
+.icon_24x24 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 24px;
+  height: 24px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+
+.content_wrapper {
+  position: relative;
+  max-width: 600px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.section-pls {
+  position: relative;
+  overflow: hidden;
+  padding-right: 5%;
+  padding-left: 5%;
+}

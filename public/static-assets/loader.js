@@ -56,7 +56,8 @@ class EthXyzLoader {
         // trigger fetch error if success is false
         textRecords && textRecords.success === false ? (this.data.fetchError = true) : null
 
-        this.getAvatar(domain).then((avatarImg) => {
+        this.getAvatar(domain)
+          .then((avatarImg) => {
             let avatarContainer = this.els.containers.avatar
             let image = avatarContainer.querySelector('img')
             let isLoaded = avatarImg.complete && avatarImg.naturalHeight !== 0
@@ -98,18 +99,18 @@ class EthXyzLoader {
   sanitizeTextRecord(record, textRecord) {
     if (textRecord !== null) {
       if (record === 'com.twitter') {
-        textRecord = textRecord.split("twitter.com/").pop()
-        textRecord = textRecord.split("@").pop()
+        textRecord = textRecord.split('twitter.com/').pop()
+        textRecord = textRecord.split('@').pop()
       } else if (record === 'com.github') {
-        textRecord = textRecord.split("github.com/").pop()
+        textRecord = textRecord.split('github.com/').pop()
       } else if (record === 'com.linkedin') {
-        textRecord = textRecord.split("linkedin.com/").pop()
+        textRecord = textRecord.split('linkedin.com/').pop()
       } else if (record === 'com.peepeth') {
-        textRecord = textRecord.split("peepeth.com/").pop()
+        textRecord = textRecord.split('peepeth.com/').pop()
       } else if (record === 'org.telegram') {
-        textRecord = textRecord.split("t.me/").pop()
+        textRecord = textRecord.split('t.me/').pop()
       } else if (record === 'io.keybase') {
-        textRecord = textRecord.split("keybase.io/").pop()
+        textRecord = textRecord.split('keybase.io/').pop()
       } else if (record === 'url') {
         if (textRecord.substring(0, 4) !== 'http') {
           textRecord = 'https://' + textRecord
@@ -193,12 +194,12 @@ class EthXyzLoader {
       this.els.toggles.portfolio.click()
     }
 
-    const offsetTop = this.els.containers.portfolio.offsetTop;
+    const offsetTop = this.els.containers.portfolio.offsetTop
 
     scroll({
       top: offsetTop,
-      behavior: "smooth"
-    });
+      behavior: 'smooth',
+    })
   }
 
   calculatePagination(page = 1) {
@@ -206,14 +207,15 @@ class EthXyzLoader {
     let numRecordsVisible = 48
     let totalNumPages = Math.ceil(totalNumRecords / numRecordsVisible)
     let currentPage = parseInt(page)
-    let paginationStart = ((currentPage - 1) * numRecordsVisible) + 1
+    let paginationStart = (currentPage - 1) * numRecordsVisible + 1
     let paginationEnd = paginationStart + numRecordsVisible - 1
     let previousPage = currentPage - 1
-    let nextPage = (currentPage + 1 <= totalNumPages) ? currentPage + 1 : 0
+    let nextPage = currentPage + 1 <= totalNumPages ? currentPage + 1 : 0
 
     this.data.nftsPagination.numVisible = numRecordsVisible
     this.data.nftsPagination.start = paginationStart
-    this.data.nftsPagination.end = (paginationEnd >= totalNumRecords) ? totalNumRecords : paginationEnd
+    this.data.nftsPagination.end =
+      paginationEnd >= totalNumRecords ? totalNumRecords : paginationEnd
     this.data.nftsPagination.currentPage = currentPage
     this.data.nftsPagination.previousPage = previousPage
     this.data.nftsPagination.nextPage = nextPage
@@ -222,7 +224,7 @@ class EthXyzLoader {
     if (currentPage <= 3) {
       this.data.nftsPagination.startMiddle = 2
       this.data.nftsPagination.endMiddle = 3
-    } else if (currentPage > (totalNumPages - 3)) {
+    } else if (currentPage > totalNumPages - 3) {
       this.data.nftsPagination.startMiddle = totalNumPages - 2
       this.data.nftsPagination.endMiddle = totalNumPages - 1
     } else {
@@ -236,7 +238,7 @@ class EthXyzLoader {
 
     this.data.nfts.forEach((nft, index) => {
       if (p === currentPage) {
-        this.data.visibleNfts.push(nft);
+        this.data.visibleNfts.push(nft)
       }
       item++
 
@@ -295,7 +297,7 @@ class EthXyzLoader {
     let lenster = this.getTextRecord('xyz.lenster')
     let lens = this.getTextRecord('xyz.lens')
     let contentHash = this.getTextRecord('contentHash')
-    let contentHashGateway = '';
+    let contentHashGateway = ''
     if (contentHash && contentHash.indexOf('ipfs://') !== -1)
       contentHashGateway = this.data.domain + '.limo'
 
@@ -324,18 +326,18 @@ class EthXyzLoader {
       this.els.containers.profile.classList.add('hide')
     } else {
       this.els.containers.profileEntry.innerHTML = this.templates.profile({
-        description: (description) ? _.escape(description) : null,
-        email: (email) ? _.escape(email) : null,
-        github: (github) ? _.escape(github) : null,
-        keybase: (keybase) ? _.escape(keybase) : null,
-        linkedin: (linkedin) ? _.escape(linkedin) : null,
-        peepeth: (peepeth) ? _.escape(peepeth) : null,
-        phone: (phone) ? _.escape(phone) : null,
-        telegram: (telegram) ? _.escape(telegram) : null,
-        twitter: (twitter) ? _.escape(twitter) : null,
-        url: (url) ? _.escape(url) : null,
-        contentHash: (contentHash) ? _.escape(contentHash) : null,
-        contentHashGateway: (contentHashGateway) ? _.escape(contentHashGateway) : null,
+        description: description ? _.escape(description) : null,
+        email: email ? _.escape(email) : null,
+        github: github ? _.escape(github) : null,
+        keybase: keybase ? _.escape(keybase) : null,
+        linkedin: linkedin ? _.escape(linkedin) : null,
+        peepeth: peepeth ? _.escape(peepeth) : null,
+        phone: phone ? _.escape(phone) : null,
+        telegram: telegram ? _.escape(telegram) : null,
+        twitter: twitter ? _.escape(twitter) : null,
+        url: url ? _.escape(url) : null,
+        contentHash: contentHash ? _.escape(contentHash) : null,
+        contentHashGateway: contentHashGateway ? _.escape(contentHashGateway) : null,
       })
       this.els.toggles.profile.click()
     }
@@ -352,28 +354,64 @@ class EthXyzLoader {
       avatarUrl = textRecordAvatar
     }
     this.els.containers.avatar.innerHTML = this.templates.avatar({
-      avatar_url: (avatarUrl) ? _.escape(avatarUrl) : null,
+      avatar_url: avatarUrl ? _.escape(avatarUrl) : null,
     })
   }
 
   checkNftImageType(nft) {
     let image_type = 'image'
-    const nftSources = ['artblocks.io','arweave.net','ethblock.art','ether.cards','etherheads.io','ethouses.io','everyicon.xyz','pinata.cloud','ipfs.io','stickynft.com','vxviewer.vercel.app']
-    const imageExtensions = ['.jpg','.jpeg','.gif','.png','.svg']
+    const nftSources = [
+      'artblocks.io',
+      'arweave.net',
+      'ethblock.art',
+      'ether.cards',
+      'etherheads.io',
+      'ethouses.io',
+      'everyicon.xyz',
+      'pinata.cloud',
+      'ipfs.io',
+      'stickynft.com',
+      'vxviewer.vercel.app',
+    ]
+    const imageExtensions = ['.jpg', '.jpeg', '.gif', '.png', '.svg']
     nftSources.forEach((source, index) => {
-      if (nft.animation_original_url && nft.animation_original_url.includes(source) || nft.animation_url && nft.animation_url.includes(source)) {
+      if (
+        (nft.animation_original_url && nft.animation_original_url.includes(source)) ||
+        (nft.animation_url && nft.animation_url.includes(source))
+      ) {
         image_type = 'nonstandard'
       }
     })
 
-    if ((nft.animation_original_url !== null && (nft.animation_original_url.slice(-4) ===
-      '.glb' || nft.animation_original_url.slice(-5) === '.gltf')) || (nft.animation_url !== null && (nft.animation_url.slice(-4) === '.glb' || nft.animation_url.slice(-5) === '.gltf'))) {
+    if (
+      (nft.animation_original_url !== null &&
+        (nft.animation_original_url.slice(-4) === '.glb' ||
+          nft.animation_original_url.slice(-5) === '.gltf')) ||
+      (nft.animation_url !== null &&
+        (nft.animation_url.slice(-4) === '.glb' || nft.animation_url.slice(-5) === '.gltf'))
+    ) {
       image_type = '3d'
-    } else if ((nft.animation_original_url !== null && (nft.animation_original_url.slice(-4) === '.mp3' || nft.animation_original_url.slice(-4) === '.mp4' || nft.animation_original_url.slice(-4) === '.mov')) || (nft.animation_url !== null && (nft.animation_url.slice(-4) === '.mp3' || nft.animation_url.slice(-4) === '.mp4' || nft.animation_url.slice(-4) === '.mov')) || (nft.image_url !== null && (nft.image_url.slice(-4) === '.mp3' || nft.image_url.slice(-4) === '.mp4' || nft.image_url.slice(-4) === '.mov'))) {
+    } else if (
+      (nft.animation_original_url !== null &&
+        (nft.animation_original_url.slice(-4) === '.mp3' ||
+          nft.animation_original_url.slice(-4) === '.mp4' ||
+          nft.animation_original_url.slice(-4) === '.mov')) ||
+      (nft.animation_url !== null &&
+        (nft.animation_url.slice(-4) === '.mp3' ||
+          nft.animation_url.slice(-4) === '.mp4' ||
+          nft.animation_url.slice(-4) === '.mov')) ||
+      (nft.image_url !== null &&
+        (nft.image_url.slice(-4) === '.mp3' ||
+          nft.image_url.slice(-4) === '.mp4' ||
+          nft.image_url.slice(-4) === '.mov'))
+    ) {
       image_type = 'video'
     } else {
       imageExtensions.forEach((source, index) => {
-        if (nft.animation_original_url && nft.animation_original_url.includes(source) || nft.animation_url && nft.animation_url.includes(source)) {
+        if (
+          (nft.animation_original_url && nft.animation_original_url.includes(source)) ||
+          (nft.animation_url && nft.animation_url.includes(source))
+        ) {
           image_type = 'image'
         }
       })
@@ -397,8 +435,8 @@ class EthXyzLoader {
     navButtons.forEach((navButton) => {
       navButton.addEventListener('click', (e) => {
         this.goToPage(e.target.dataset.page)
-      });
-    });
+      })
+    })
   }
 
   renderPortfolio() {
@@ -418,7 +456,7 @@ class EthXyzLoader {
         let image_type = this.checkNftImageType(nft)
         let image_url
         if (image_type === 'nonstandard') {
-          image_url = (nft.image_preview_url) ? nft.image_preview_url : nft.image_url
+          image_url = nft.image_preview_url ? nft.image_preview_url : nft.image_url
         } else {
           if (nft.image_preview_url) {
             image_url = nft.image_preview_url
@@ -446,12 +484,12 @@ class EthXyzLoader {
 
         newHtml += this.templates.portfolioEntry({
           index: index,
-          image_url: (image_url) ? _.escape(image_url) : null,
-          image_preview_url: (nft.image_preview_url) ? _.escape(nft.image_preview_url) : null,
+          image_url: image_url ? _.escape(image_url) : null,
+          image_preview_url: nft.image_preview_url ? _.escape(nft.image_preview_url) : null,
           image_type: image_type,
-          name: (nft_name) ? _.escape(nft_name) : null,
-          description: (nft.description) ? _.escape(nft.description) : null,
-          url: (nft.permalink) ? _.escape(nft.permalink) : null,
+          name: nft_name ? _.escape(nft_name) : null,
+          description: nft.description ? _.escape(nft.description) : null,
+          url: nft.permalink ? _.escape(nft.permalink) : null,
         })
       })
 
@@ -510,14 +548,14 @@ class EthXyzLoader {
     }
 
     this.els.containers.nftModal.innerHTML = this.templates.nftModal({
-      image_url: (image_url) ? _.escape(image_url) : null,
-      image_preview_url: (image_preview_url) ? _.escape(image_preview_url) : null,
+      image_url: image_url ? _.escape(image_url) : null,
+      image_preview_url: image_preview_url ? _.escape(image_preview_url) : null,
       image_type: image_type,
-      name: (nft_name) ? _.escape(nft_name) : null,
-      description: (nft.description) ? _.escape(nft.description) : null,
-      creator_username: (creator_username) ? _.escape(creator_username) : null,
-      creator_avatar: (creator_avatar) ? _.escape(creator_avatar) : null,
-      url: (nft.permalink) ? _.escape(nft.permalink) : null,
+      name: nft_name ? _.escape(nft_name) : null,
+      description: nft.description ? _.escape(nft.description) : null,
+      creator_username: creator_username ? _.escape(creator_username) : null,
+      creator_avatar: creator_avatar ? _.escape(creator_avatar) : null,
+      url: nft.permalink ? _.escape(nft.permalink) : null,
     })
     this.els.containers.nftModal.classList.remove('invisible', 'invisible-start')
     this.els.containers.nftModal.classList.add('visible')
@@ -547,14 +585,11 @@ class EthXyzLoader {
         }
 
         // Don't do anything until after the videoElement has loaded
-        videoElement.addEventListener( "loadedmetadata", function (e) {
-
-          (async () => {
-
+        videoElement.addEventListener('loadedmetadata', function (e) {
+          ;(async () => {
             // The responsiveVideo() function will run on initial page load,
             // then re-run each time the browser window is resized or mobile orientation changes
             function responsiveVideo() {
-
               let newAspectRatio
 
               if (videoOriginalHeight === 0) {
@@ -575,14 +610,13 @@ class EthXyzLoader {
               // If the video's natural width is greater than or equal to videoFrameMaxWidth,
               // use the full width of the modal, using padding-bottom to set height based on aspect ratio
               if (videoWidth > videoFrameMaxWidth) {
-                videoContainer.style.paddingBottom = aspectRatio * 100 + "%"
+                videoContainer.style.paddingBottom = aspectRatio * 100 + '%'
 
-              // If the video's natural width is less than videoFrameMaxWidth:
+                // If the video's natural width is less than videoFrameMaxWidth:
               } else {
-
                 // If the window width is greater than or equal to the videoWidth + side margins,
                 // set the height to the natural height of the video & remove padding-bottom
-                if (windowWidth >= (videoWidth + videoFrameSideMargins)) {
+                if (windowWidth >= videoWidth + videoFrameSideMargins) {
                   videoContainer.style.height = videoHeight + 'px'
                   videoContainer.style.width = 'auto'
                   videoContainer.style.removeProperty('padding-bottom')
@@ -598,7 +632,7 @@ class EthXyzLoader {
                   } else {
                     videoContainer.style.removeProperty('height')
                   }
-                  videoContainer.style.paddingBottom = aspectRatio * 100 + "%"
+                  videoContainer.style.paddingBottom = aspectRatio * 100 + '%'
                 }
               }
             }
@@ -610,22 +644,28 @@ class EthXyzLoader {
 
             // If the video height is 0, wait until the video preview image has loaded so that
             // the image values can be used in the responsiveVideo function below
-            let videoPreviewImage = (videoOriginalHeight === 0) ? await getPreviewImage(nft.image_url) : null
+            let videoPreviewImage =
+              videoOriginalHeight === 0 ? await getPreviewImage(nft.image_url) : null
 
             // Run this function once on initial page load
             responsiveVideo()
 
             // Then, as the window resizes, run responsiveVideo() each time
-            window.addEventListener('resize', function() {
-              responsiveVideo()
-            }.bind(event))
+            window.addEventListener(
+              'resize',
+              function () {
+                responsiveVideo()
+              }.bind(event)
+            )
 
             // Or when there's an orientation change in mobile, run responsiveVideo() - for iOS Chrome
-            window.addEventListener('orientationchange', function() {
-              responsiveVideo()
-            }.bind(event))
+            window.addEventListener(
+              'orientationchange',
+              function () {
+                responsiveVideo()
+              }.bind(event)
+            )
           })()
-
         })
       } else {
         const img = new Image()
@@ -635,45 +675,52 @@ class EthXyzLoader {
           .then(() => {
             modalImageContainer.classList.remove('loading')
           })
-          .catch((err) => {
-          })
+          .catch((err) => {})
       }
     })()
 
     function pauseModalVideo() {
       let videoElement = modalImageContainer.querySelector('video')
       if (videoElement) {
-        videoElement.pause();
+        videoElement.pause()
       }
     }
 
     let modalMain = document.getElementById('nft-modal')
-    document.addEventListener('click', function (event) {
-      if (
-        !modalContainer.classList.contains('invisible') &&
-        (event.target === modalMain || event.target === modalContainer)
-      ) {
-        pauseModalVideo()
-        modalContainer.classList.remove('visible')
-        modalContainer.classList.add('invisible')
-      }
-    }.bind(pauseModalVideo))
+    document.addEventListener(
+      'click',
+      function (event) {
+        if (
+          !modalContainer.classList.contains('invisible') &&
+          (event.target === modalMain || event.target === modalContainer)
+        ) {
+          pauseModalVideo()
+          modalContainer.classList.remove('visible')
+          modalContainer.classList.add('invisible')
+        }
+      }.bind(pauseModalVideo)
+    )
 
     let modalContainer = this.els.containers.nftModal
-    window.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape') {
-        pauseModalVideo()
-        modalContainer.classList.remove('visible')
-        modalContainer.classList.add('invisible')
-      }
-    }.bind(pauseModalVideo))
+    window.addEventListener(
+      'keydown',
+      function (event) {
+        if (event.key === 'Escape') {
+          pauseModalVideo()
+          modalContainer.classList.remove('visible')
+          modalContainer.classList.add('invisible')
+        }
+      }.bind(pauseModalVideo)
+    )
   }
 
   pauseModalVideo() {
-    let modalImageContainer = this.els.containers.nftModal.querySelector('#nft-modal-image-container')
+    let modalImageContainer = this.els.containers.nftModal.querySelector(
+      '#nft-modal-image-container'
+    )
     let videoElement = modalImageContainer.querySelector('video')
     if (videoElement) {
-      videoElement.pause();
+      videoElement.pause()
     }
   }
 
