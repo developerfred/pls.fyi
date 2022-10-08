@@ -1551,3 +1551,41 @@ linear-gradient(transparent, transparent);
   padding-right: 5%;
   padding-left: 5%;
 }
+
+
+/* send-tip component  */
+
+.send-tip__component {
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.button-tip-style {
+  margin-top: 50px;
+  padding: 10px 20px;
+  border-radius: 50px;
+  background-color: #f7f6ff;
+  box-shadow: -14px -14px 30px 0 #fff, 14px 14px 30px 0 #d1d9e6;
+  -webkit-transition: all 200ms ease;
+  transition: all 200ms ease;
+  color: #2e2c4e;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.tip-button {
+  display: inline-block;
+  padding: 9px 15px;
+  background-color: #3898EC;
+  color: white;
+  border: 0;
+  line-height: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 0;
+}
