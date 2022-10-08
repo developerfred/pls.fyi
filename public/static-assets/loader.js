@@ -138,7 +138,7 @@ class EthXyzLoader {
       .then(() => {
         return img
       })
-      .catch((err) => {
+      .catch(() => {
         this.log('Avatar failed to load.')
         throw 'Avatar failed to load.'
       })
@@ -453,7 +453,9 @@ class EthXyzLoader {
     } else {
       let newHtml = '<ul class="profile__portfolio--items list-unstyled">'
       this.data.visibleNfts.forEach((nft, index) => {
+        // eslint-disable-next-line @typescript-eslint/naming-convention
         let image_type = this.checkNftImageType(nft)
+        // eslint-disable-next-line @typescript-eslint/naming-convention
         let image_url
         if (image_type === 'nonstandard') {
           image_url = nft.image_preview_url ? nft.image_preview_url : nft.image_url
@@ -473,6 +475,7 @@ class EthXyzLoader {
           }
         }
 
+        // eslint-disable-next-line @typescript-eslint/naming-convention
         let nft_name = '[Unidentified]'
         if (nft.name) {
           nft_name = nft.name
@@ -501,6 +504,7 @@ class EthXyzLoader {
 
   renderNftModal(e) {
     let nft = this.data.visibleNfts[e.dataset.nftIndex]
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     let creator_username =
       // eslint-disable-next-line eqeqeq
       nft.creator != null && nft.creator.user != null && nft.creator.user.username != null
@@ -568,6 +572,7 @@ class EthXyzLoader {
       if (image_type === 'video') {
         let videoElement = modalImageContainer.querySelector('video')
 
+        // eslint-disable-next-line no-inner-declarations
         async function getPreviewImage(url) {
           const img = new Image()
           img.src = url
@@ -577,7 +582,7 @@ class EthXyzLoader {
             .then(() => {
               return img
             })
-            .catch((err) => {
+            .catch(() => {
               this.log('NFT image failed to load.')
               throw 'NFT image failed to load.'
             })

@@ -852,7 +852,7 @@ linear-gradient(transparent, transparent);
   background-size: cover;
   background-position: center center;
   width: calc(50% - 15px);
-  margin-bottom: 15px;
+  margin-bottom: 70px;
   margin-left: 15px;
   flex: 0 0 auto;
   border: 2px solid #fff;
@@ -1588,4 +1588,9 @@ linear-gradient(transparent, transparent);
   text-decoration: none;
   cursor: pointer;
   border-radius: 0;
+}
+
+.profile__portfolio--name {
+  font-weight: 700;
+  padding: 16px 4px;
 }
